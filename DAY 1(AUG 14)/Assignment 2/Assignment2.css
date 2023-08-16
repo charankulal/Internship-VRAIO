@@ -5,15 +5,18 @@
 h1{
     margin: 25px;
 }
+.bigcontainer{
+    width: 200%;
+}
 .container{
     padding-top: 4%;
     margin-top: 1%;
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    width: 100%;
+    /* width: 100%; */
     place-items: center;
     gap:30px;
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 40px;
     background-color: rgb(244, 230, 230);
 }
