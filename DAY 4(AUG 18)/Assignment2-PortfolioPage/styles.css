@@ -7,9 +7,6 @@
     color: rgb(50, 206, 50);
 }
 .vertical{
-    border-left : 1px solid rgb(134, 133, 133) ;
-    /* The `height: fit-content;` property is used to make the height of an element adjust
-    automatically to fit its content. It allows the element to expand or shrink vertically based on
-    the height of its content. */
+    border-left : 1px solid rgb(173, 171, 171) ;
     height: max-content;
 }
