@@ -11,19 +11,23 @@
     color: azure;
     border-radius: 8px;
 }
-.card-title{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+/* .card-title{
+    /* font-family:Verdana, Geneva, Tahoma, sans-serif; 
     padding-left: 5px;
-}
+} */
 .card-link{
     color: white;
     text-decoration: none;
     font-weight: bolder;
     
 }
+.cards{
+    margin-top: 3%;
+}
 .card{
     max-width: 540px;
 }
-/* .card-text{
-    padding: 15px;
-} */
+.from{
+    font-style: italic;
+    font-weight: bolder;
+}
