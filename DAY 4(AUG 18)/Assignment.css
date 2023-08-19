@@ -1,4 +1,7 @@
-.image{
+
+*{
+    font-family: 'Times New Roman', Times, serif;
+}.image{
     width: 35px;
     height: 35px;
 }
@@ -30,4 +33,12 @@
 .from{
     font-style: italic;
     font-weight: bolder;
+}
+.title{
+    font-style: italic;
+}
+img{
+    width: 60%;
+    height: 70%;
+    border-radius: 0 5px 5px 0;
 }
