@@ -30,3 +30,7 @@ strong{
     justify-items: center;
     padding: 0 30%;
 }
+.rounded-circle{
+    width: 70% !important;
+    height:90% !important;
+}
