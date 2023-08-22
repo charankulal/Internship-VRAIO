@@ -7,7 +7,9 @@
 #tableData{
     width: 50%;
     margin-left: 25%;
+    display: none;
 }
 .button{
     padding-left: 45%;
+    display: none;
 }
