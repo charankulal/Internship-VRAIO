@@ -8,13 +8,13 @@ function addTableRow() {
             const trElement = document.createElement('tr');
             const tbodyElement = document.createElement('tbody');
             const nameEle = document.createElement('td');
-            const emailEle = document.createElement('td');
+            const regEle = document.createElement('td');
             const gradeEle = document.createElement('td');
             nameEle.innerHTML = userName;
-            emailEle.innerHTML = regNo;
+            regEle.innerHTML = regNo;
             gradeEle.innerHTML = grade;
             trElement.appendChild(nameEle);
-            trElement.appendChild(emailEle);
+            trElement.appendChild(regEle);
             trElement.appendChild(gradeEle);
             tbodyElement.appendChild(trElement);
             tableElement.appendChild(tbodyElement);
