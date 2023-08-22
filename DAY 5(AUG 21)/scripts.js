@@ -1,5 +1,7 @@
+let slNo=1;
 function addTableRow() {
     var i=0;
+    
     const userName = document.getElementById('userName').value;
         const regNo = document.getElementById('regNo').value;
         const grade = document.getElementById('grade').value;
@@ -7,15 +9,20 @@ function addTableRow() {
             const tableElement = document.getElementById('tableData');
             const trElement = document.createElement('tr');
             const tbodyElement = document.createElement('tbody');
+            const serialNumEle = document.createElement('td');
             const nameEle = document.createElement('td');
             const regEle = document.createElement('td');
             const gradeEle = document.createElement('td');
+            
+            serialNumEle.innerHTML=slNo++;
             nameEle.innerHTML = userName;
             regEle.innerHTML = regNo;
             gradeEle.innerHTML = grade;
+            trElement.appendChild(serialNumEle);
             trElement.appendChild(nameEle);
             trElement.appendChild(regEle);
             trElement.appendChild(gradeEle);
+            
             tbodyElement.appendChild(trElement);
             tableElement.appendChild(tbodyElement);
             i=i+1;
