@@ -21,15 +21,30 @@ function addTableRow() {
             i=i+1;
             sortTable(0);
         } 
-        else if(!userName){
-            alert("Name field cannot be empty");
+        
+        if(!userName){
+            gradeWarning.innerHTML='';
+            regNoWarning.innerHTML='';
+            const userNameWarning = document.getElementById('userNameWarning');
+            userNameWarning.innerHTML='The Name field cannot be blank';
+            document.getElementById('userName').focus();
+
         } 
         else if(!regNo){
-            alert("Registration number field cannot be empty");
+            userNameWarning.innerHTML='';
+            gradeWarning.innerHTML='';
+            const regNoWarning = document.getElementById('regNoWarning');
+            regNoWarning.innerHTML='The Registration number field cannot be blank';
+            document.getElementById('regNo').focus();
         } 
         else if(!grade){
-            alert("Grade field cannot be empty");
+            userNameWarning.innerHTML='';
+            regNoWarning.innerHTML='';
+            const gradeWarning = document.getElementById('gradeWarning');
+            gradeWarning.innerHTML='The Grade field cannot be blank';
+            document.getElementById('grade').focus();
         }     
+    
  }
  function sortTable(n) {
     let table;

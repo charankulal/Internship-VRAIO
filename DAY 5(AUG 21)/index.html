@@ -14,17 +14,28 @@
     <div class="row">
       <h1 class="mx-5">Student Details Form</h1>
     <form class="w-50 " onsubmit="submitFormReturn();return false;">
-        <div class="mb-3 ">
+        <div class="col-12 ">
           <label for="userName" class="form-label">Name</label>
           <input type="text" class="form-control" id="userName">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 ">
+          <span class="text-danger" id="userNameWarning"></span>
+
+        </div>
+
+        <div class="col-12">
           <label for="regNo" class="form-label">Registration Number</label>
           <input type="text" class="form-control" id="regNo">
         </div>
-        <div class="mb-3">
+        <div class="mb-3 ">
+          <span class="text-danger" id="regNoWarning"></span>
+        </div>
+        <div class="col-12">
             <label for="grade" class="form-label">Grade</label>
             <input type="text" class="form-control" id="grade">
+          </div>
+          <div class="mb-3 ">
+            <span class="text-danger" id="gradeWarning"></span>
           </div>
         <div class="buttons">
         <button type="button" class="btn btn-success m-2" id="submit" onclick="addTableRow()">Submit</button>
