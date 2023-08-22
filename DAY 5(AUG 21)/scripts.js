@@ -27,7 +27,7 @@ function addTableRow() {
     table = document.getElementById("tableData");
     var rows, i, x, y, count = 0;
     var switching = true;
-    var direction = "ascending";
+    var direction = "asc";
     while (switching) {
         switching = false;
         var rows = table.rows;
@@ -35,13 +35,13 @@ function addTableRow() {
             var Switch = false;
             x = rows[i].getElementsByTagName("td")[n];
             y = rows[i + 1].getElementsByTagName("td")[n];
-            if (direction == "ascending") {
+            if (direction == "asc") {
                 if (x.innerHTML.toLowerCase() >
                 y.innerHTML.toLowerCase()) {
                     Switch = true;
                     break;
                 }
-            } else if (direction == "descending") {
+            } else if (direction == "desc") {
                 if (x.innerHTML.toLowerCase() <
                 y.innerHTML.toLowerCase()) {
                     Switch = true;
@@ -54,8 +54,8 @@ function addTableRow() {
             switching = true;
             count++;
         } else {
-            if (count == 0 && direction == "ascending") {
-                direction = "descending";
+            if (count == 0 && direction == "asc") {
+                direction = "desc";
                 switching = true;
             }
         }
