@@ -20,7 +20,10 @@ function addTableRow() {
             tableElement.appendChild(tbodyElement);
             i=i+1;
             sortTable(0);
-        }     
+        } 
+        else if(!userName){
+            alert("Name field is empty");
+        }    
  }
  function sortTable(n) {
     let table;
@@ -31,7 +34,7 @@ function addTableRow() {
     while (switching) {
         switching = false;
         var rows = table.rows;
-        for (i = 1; i < (rows.length - 1); i++) {
+        for (i = 1; i < (rows.length); i++) {
             var Switch = false;
             x = rows[i].getElementsByTagName("td")[n];
             y = rows[i + 1].getElementsByTagName("td")[n];
