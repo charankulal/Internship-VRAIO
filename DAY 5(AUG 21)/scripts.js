@@ -1,5 +1,14 @@
 let slNo = 1;
-
+let val=0;
+function disableWarning_userName(){
+  userNameWarning.innerHTML = "";
+}
+function disableWarning_regNo(){
+  regNoWarning.innerHTML = "";
+}
+function disableWarning_grade(){
+  gradeWarning.innerHTML = "";
+}
 function addTableRow() {
   var i = 0;
 
@@ -18,24 +27,24 @@ function addTableRow() {
     const nameEle = document.createElement("td");
     const regEle = document.createElement("td");
     const gradeEle = document.createElement("td");
-
-    serialNumEle.innerHTML = slNo++;
+    
+    
+    serialNumEle.innerHTML = "";
     nameEle.innerHTML = userName;
     regEle.innerHTML = regNo;
     gradeEle.innerHTML = grade;
-    trElement.appendChild(serialNumEle);
+    trElement.appendChild(serialNumEle); 
     trElement.appendChild(nameEle);
     trElement.appendChild(regEle);
     trElement.appendChild(gradeEle);
-
+    
     tbodyElement.appendChild(trElement);
     tableElement.appendChild(tbodyElement);
-    tableElement.style.display="table"
-    i = i + 1;
-    
-    sortTable(1); 
+    tableElement.style.display="table";
+    sortTable(1);
+
   }
-  else if(!userName &&!regNo && ! grade)
+  if(!userName &&!regNo && ! grade)
   {
     const userNameWarning = document.getElementById("userNameWarning");
     userNameWarning.innerHTML = "The Name field cannot be blank";
@@ -94,9 +103,11 @@ function addTableRow() {
     gradeWarning.innerHTML = "The Grade field cannot be blank";
     document.getElementById("grade").focus();
   }
+  
 }
 function sortTable(n) {
   let table;
+val++;
   table = document.getElementById("tableData");
   var rows,
     i,
@@ -104,7 +115,12 @@ function sortTable(n) {
     y,
     count = 0;
   var switching = true;
+  if(val%2==0){
   var direction = "asc";
+  }
+  else{
+    var direction = "desc";
+  }
   while (switching) {
     switching = false;
     var rows = table.rows;
@@ -124,10 +140,12 @@ function sortTable(n) {
         }
       }
     }
+
     if (Switch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       count++;
+      
     } else {
       if (count == 0 && direction == "asc") {
         direction = "desc";
@@ -135,4 +153,14 @@ function sortTable(n) {
       }
     }
   }
+  
+  
 }
+var addSerialNumber = function () {
+  var i = 0
+  $('table tr').each(function(index) {
+      $(this).find('td:nth-child(0)').html(index-1+1);
+  });
+};
+
+
