@@ -22,8 +22,14 @@ function addTableRow() {
             sortTable(0);
         } 
         else if(!userName){
-            alert("Name field is empty");
-        }    
+            alert("Name field cannot be empty");
+        } 
+        else if(!regNo){
+            alert("Registration number field cannot be empty");
+        } 
+        else if(!grade){
+            alert("Grade field cannot be empty");
+        }     
  }
  function sortTable(n) {
     let table;
