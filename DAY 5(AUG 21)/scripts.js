@@ -27,6 +27,7 @@ function addTableRow() {
     const nameEle = document.createElement("td");
     const regEle = document.createElement("td");
     const gradeEle = document.createElement("td");
+    const button=document.getElementById("button")
     
     
     serialNumEle.innerHTML = "";
@@ -41,6 +42,7 @@ function addTableRow() {
     tbodyElement.appendChild(trElement);
     tableElement.appendChild(tbodyElement);
     tableElement.style.display="table";
+    button.style.display="block";
     sortTable(1);
 
   }
@@ -124,7 +126,7 @@ val++;
   while (switching) {
     switching = false;
     var rows = table.rows;
-    for (i = 1; i < rows.length; i++) {
+    for (i = 1; i < rows.length-1; i++) {
       var Switch = false;
       x = rows[i].getElementsByTagName("td")[n];
       y = rows[i + 1].getElementsByTagName("td")[n];
@@ -140,7 +142,6 @@ val++;
         }
       }
     }
-
     if (Switch) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
@@ -153,14 +154,15 @@ val++;
       }
     }
   }
-  
+  var rows = table.rows;
+  for (i = 1; i < rows.length; i++)
+  {
+    x = rows[i].getElementsByTagName("td")[0];
+    x.innerHTML=i;
+    console.log(x.innerHTML);
+  }
   
 }
-var addSerialNumber = function () {
-  var i = 0
-  $('table tr').each(function(index) {
-      $(this).find('td:nth-child(0)').html(index-1+1);
-  });
-};
+
 
 

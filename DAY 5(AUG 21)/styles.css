@@ -1,5 +1,5 @@
 .row{
-    padding-left: 30%;
+    padding-left: 35%;
 }
 .buttons{
     padding-left: 35%;
@@ -11,14 +11,9 @@
 }
 .button{
     padding-left: 45%;
+    
+}
+#button{
     display: none;
 }
-body
-{
-    counter-reset: Serial;           /* Set the Serial counter to 0 */
-}
-.auto-index td:first-child:before
-{
-  counter-increment: Serial;      /* Increment the Serial counter */
-  /* content: "Serial is: " counter(Serial); Display the counter */
-}
+
