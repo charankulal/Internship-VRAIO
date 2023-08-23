@@ -28,16 +28,33 @@ function addTableRow() {
     const nameEle = document.createElement("td");
     const regEle = document.createElement("td");
     const gradeEle = document.createElement("td");
+    const actions=document.createElement("td");
+
     const button = document.getElementById("button");
+
+    let myDiv = document.createElement('DIV');
+    let deleteButton=document.createElement('BUTTON');
+    deleteButton.setAttribute("class","mx-2 btn btn-danger")
+    let editButton=document.createElement('BUTTON');
+    deleteButton.setAttribute("class","mx-2 btn btn-info")
+    let deleteText = document.createTextNode("Delete");
+    let editText = document.createTextNode("Edit");
+    
 
     serialNumEle.innerHTML = "";
     nameEle.innerHTML = userName;
     regEle.innerHTML = regNo;
     gradeEle.innerHTML = grade;
+    deleteButton.appendChild(deleteText);
+    editButton.appendChild(editText);
+    myDiv.appendChild(deleteButton);
+    myDiv.appendChild(editButton);
+    actions.appendChild(myDiv)
     trElement.appendChild(serialNumEle);
     trElement.appendChild(nameEle);
     trElement.appendChild(regEle);
     trElement.appendChild(gradeEle);
+    trElement.appendChild(actions);
 
     tbodyElement.appendChild(trElement);
     tableElement.appendChild(tbodyElement);
