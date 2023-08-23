@@ -20,6 +20,8 @@ function addTableRow() {
  
 
   if (userName && regNo && grade) {
+  document.getElementById("form").reset();
+
     const tableElement = document.getElementById("tableData");
     const trElement = document.createElement("tr");
     const tbodyElement = document.createElement("tbody");
@@ -46,65 +48,82 @@ function addTableRow() {
     sortTable(1);
 
   }
-  if(!userName &&!regNo && ! grade)
+  if(!userName || !regNo || ! grade)
   {
-    const userNameWarning = document.getElementById("userNameWarning");
-    userNameWarning.innerHTML = "The Name field cannot be blank";
-    const regNoWarning = document.getElementById("regNoWarning");
-    regNoWarning.innerHTML = "The Registration number field cannot be blank";
-    const gradeWarning = document.getElementById("gradeWarning");
-    gradeWarning.innerHTML = "The Grade field cannot be blank";
-    document.getElementById("userName").focus();
+    if (!grade) {
+      // userNameWarning.innerHTML = "";
+      // regNoWarning.innerHTML = "";
+      const gradeWarning = document.getElementById("gradeWarning");
+      gradeWarning.innerHTML = "The Grade field cannot be blank";
+      document.getElementById("grade").focus();
+    }
+    if (!regNo) {
+      // userNameWarning.innerHTML = "";
+      // gradeWarning.innerHTML = "";
+      const regNoWarning = document.getElementById("regNoWarning");
+      regNoWarning.innerHTML = "The Registration number field cannot be blank";
+      document.getElementById("regNo").focus();
+    }
+    if (!userName) {
+      // gradeWarning.innerHTML = "";
+      // regNoWarning.innerHTML = "";
+      const userNameWarning = document.getElementById("userNameWarning");
+      userNameWarning.innerHTML = "The Name field cannot be blank";
+      document.getElementById("userName").focus();
+    }
+    
+    
+    
   }
   
-   else if(!userName && ! regNo)
-  {
-    gradeWarning.innerHTML = "";
-    const userNameWarning = document.getElementById("userNameWarning");
-    userNameWarning.innerHTML = "The Name field cannot be blank";
+  //  else if(!userName && ! regNo)
+  // {
+  //   gradeWarning.innerHTML = "";
+  //   const userNameWarning = document.getElementById("userNameWarning");
+  //   userNameWarning.innerHTML = "The Name field cannot be blank";
     
-    const regNoWarning = document.getElementById("regNoWarning");
-    regNoWarning.innerHTML = "The Registration number field cannot be blank";
-    document.getElementById("userName").focus();
-  }
-  else if(!userName && ! grade)
-  {
-    regNoWarning.innerHTML = "";
-    const userNameWarning = document.getElementById("userNameWarning");
-    userNameWarning.innerHTML = "The Name field cannot be blank";
-    const gradeWarning = document.getElementById("gradeWarning");
-    gradeWarning.innerHTML = "The Grade field cannot be blank";
-    document.getElementById("userName").focus();
-  }
-  else if(!regNo && ! grade)
-  {
-    userNameWarning.innerHTML = "";
-    const regNoWarning = document.getElementById("regNoWarning");
-    regNoWarning.innerHTML = "The Registration number field cannot be blank";
-    const gradeWarning = document.getElementById("gradeWarning");
-    gradeWarning.innerHTML = "The Grade field cannot be blank";
-    document.getElementById("regNo").focus();
-  }
+  //   const regNoWarning = document.getElementById("regNoWarning");
+  //   regNoWarning.innerHTML = "The Registration number field cannot be blank";
+  //   document.getElementById("userName").focus();
+  // }
+  // else if(!userName && ! grade)
+  // {
+  //   regNoWarning.innerHTML = "";
+  //   const userNameWarning = document.getElementById("userNameWarning");
+  //   userNameWarning.innerHTML = "The Name field cannot be blank";
+  //   const gradeWarning = document.getElementById("gradeWarning");
+  //   gradeWarning.innerHTML = "The Grade field cannot be blank";
+  //   document.getElementById("userName").focus();
+  // }
+  // else if(!regNo && ! grade)
+  // {
+  //   userNameWarning.innerHTML = "";
+  //   const regNoWarning = document.getElementById("regNoWarning");
+  //   regNoWarning.innerHTML = "The Registration number field cannot be blank";
+  //   const gradeWarning = document.getElementById("gradeWarning");
+  //   gradeWarning.innerHTML = "The Grade field cannot be blank";
+  //   document.getElementById("regNo").focus();
+  // }
 
-  else if (!userName) {
-    gradeWarning.innerHTML = "";
-    regNoWarning.innerHTML = "";
-    const userNameWarning = document.getElementById("userNameWarning");
-    userNameWarning.innerHTML = "The Name field cannot be blank";
-    document.getElementById("userName").focus();
-  }else if (!regNo) {
-    userNameWarning.innerHTML = "";
-    gradeWarning.innerHTML = "";
-    const regNoWarning = document.getElementById("regNoWarning");
-    regNoWarning.innerHTML = "The Registration number field cannot be blank";
-    document.getElementById("regNo").focus();
-  }else  if (!grade) {
-    userNameWarning.innerHTML = "";
-    regNoWarning.innerHTML = "";
-    const gradeWarning = document.getElementById("gradeWarning");
-    gradeWarning.innerHTML = "The Grade field cannot be blank";
-    document.getElementById("grade").focus();
-  }
+  // else if (!userName) {
+  //   gradeWarning.innerHTML = "";
+  //   regNoWarning.innerHTML = "";
+  //   const userNameWarning = document.getElementById("userNameWarning");
+  //   userNameWarning.innerHTML = "The Name field cannot be blank";
+  //   document.getElementById("userName").focus();
+  // }else if (!regNo) {
+  //   userNameWarning.innerHTML = "";
+  //   gradeWarning.innerHTML = "";
+  //   const regNoWarning = document.getElementById("regNoWarning");
+  //   regNoWarning.innerHTML = "The Registration number field cannot be blank";
+  //   document.getElementById("regNo").focus();
+  // }else  if (!grade) {
+  //   userNameWarning.innerHTML = "";
+  //   regNoWarning.innerHTML = "";
+  //   const gradeWarning = document.getElementById("gradeWarning");
+  //   gradeWarning.innerHTML = "The Grade field cannot be blank";
+  //   document.getElementById("grade").focus();
+  // }
   
 }
 function sortTable(n) {
@@ -161,6 +180,12 @@ val++;
     x.innerHTML=i;
     console.log(x.innerHTML);
   }
+  
+}
+function deleteData(){
+  const table=document.getElementById("tableData");
+  table.style.display="none";
+  table.style.display="table";
   
 }
 
