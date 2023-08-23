@@ -1,88 +1,163 @@
-let slNo = 1;
-let val = 0;
-function disableWarning_userName() {
-  userNameWarning.innerHTML = "";
+let val=0;
+
+
+const table = document.getElementById('tableData')
+const username = document.getElementById('username')
+const reg = document.getElementById('reg')
+const grade = document.getElementById('grade')
+const submit = document.getElementById('submit')
+const reset_btn = document.getElementById('reset_btn')
+const tableBody = document.getElementById('tableBody')
+const header=document.getElementById('tableHeader')
+let tableData = [
+];
+
+let i = 0
+
+const submitAction = () => {
+    if (validate()) {
+        console.log(
+            document.getElementById('username').value
+        );
+        let data = {
+            key: i,
+            name: username.value,
+            reg: reg.value,
+            grade: grade.value
+        }
+        tableData.push(data)
+        clearForm()
+        sortByReg()
+        displayTable()
+        table.style.display="table";
+        header.style.display="block"
+    }
 }
-function disableWarning_regNo() {
-  regNoWarning.innerHTML = "";
-}
-function disableWarning_grade() {
-  gradeWarning.innerHTML = "";
-}
-function addTableRow() {
-  var i = 0;
-
-  const userName = document.getElementById("userName").value;
-  const regNo = document.getElementById("regNo").value;
-  const grade = document.getElementById("grade").value;
-
-  if (userName && regNo && grade) {
-    document.getElementById("form").reset();
-
-    const tableElement = document.getElementById("tableData");
-    const trElement = document.createElement("tr");
-    
-    const  tbodyElement=document.getElementById('tbodyEle');
-    
-    const serialNumEle = document.createElement("td");
-    const nameEle = document.createElement("td");
-    const regEle = document.createElement("td");
-    const gradeEle = document.createElement("td");
-    const actions=document.createElement("td");
-
-    const button = document.getElementById("button");
-
-    let myDiv = document.createElement('DIV');
-    let deleteButton=document.createElement('BUTTON');
-    deleteButton.setAttribute("class","mx-2 btn btn-danger")
-    let editButton=document.createElement('BUTTON');
-    editButton.setAttribute("class","mx-2 btn btn-secondary")
-    let deleteText = document.createTextNode("Delete");
-    let editText = document.createTextNode("Edit");
-    
-
-    serialNumEle.innerHTML = "";
-    nameEle.innerHTML = userName;
-    regEle.innerHTML = regNo;
-    gradeEle.innerHTML = grade;
-    deleteButton.appendChild(deleteText);
-    editButton.appendChild(editText);
-    myDiv.appendChild(deleteButton);
-    myDiv.appendChild(editButton);
-    actions.appendChild(myDiv)
-    trElement.appendChild(serialNumEle);
-    trElement.appendChild(nameEle);
-    trElement.appendChild(regEle);
-    trElement.appendChild(gradeEle);
-    trElement.appendChild(actions);
-
-    tbodyElement.appendChild(trElement);
-    tableElement.appendChild(tbodyElement);
-    tableElement.style.display = "table";
-    button.style.display = "block";
+const displayTable = () => {
+    tableBody.innerHTML = ""
+    let sl = 1
+    tableData.forEach(element => {
+        console.log(element)
+        x = document.createElement('TR')
+        x.setAttribute('id',`row${element.key}`)
+        x.innerHTML = `<tr><td>${sl}</td><td>${element.name}</td><td>${element.reg}</td><td>${element.grade}</td><td colspan="2"><div class="row g-2 "><div class="col-6 justify-content-center"><button class="btn w-100 btn-success" id="edit" onclick="editData(${element.key})">Edit</button></div><div class="col-6"><button onclick="deleteData(${element.key})" class="btn w-100 btn-danger" id="edit">Delete</button></div> </div></td></tr>`
+        tableBody.appendChild(x)
+        i++
+    });
     sortTable(1);
-  }
-  if (!userName || !regNo || !grade) {
-    if (!grade) {
-      const gradeWarning = document.getElementById("gradeWarning");
-      gradeWarning.innerHTML = "The Grade field cannot be blank";
-      document.getElementById("grade").focus();
-    }
-    if (!regNo) {
-      const regNoWarning = document.getElementById("regNoWarning");
-      regNoWarning.innerHTML = "The Registration number field cannot be blank";
-      document.getElementById("regNo").focus();
-    }
-    if (!userName) {
-      const userNameWarning = document.getElementById("userNameWarning");
-      userNameWarning.innerHTML = "The Name field cannot be blank";
-      document.getElementById("userName").focus();
-    }
-  }
+
 }
+
+const deleteData = (key) => {
+    tableData.splice(tableData.findIndex(object => {
+        return object.key === key
+    }),1)
+    console.log(tableData)
+    displayTable()
+}
+
+const inputChange=()=>{
+    alert("editing")
+}
+
+
+const editData=(key)=>{
+    let row=document.getElementById(`row${key}`)
+    for(i=1;i<row.cells.length-1;i++){
+        x = document.createElement('input')
+        x.setAttribute('type','text')
+        x.setAttribute('class','w-100')
+        x.setAttribute('oninput','inputChange()')
+        x.setAttribute('value',row.cells[i].innerHTML)
+        row.cells[i].innerHTML=""
+        row.cells[i].appendChild(x)
+    }
+}
+
+const sortByName = () => {
+    console.log(
+        tableData
+    );
+    tableData = tableData.map(
+        array => (
+            {
+                key: array.key,
+                name: array.name,
+                reg: array.reg,
+                grade: array.grade
+            }
+        )
+    ).sort((a, b) => a.name.localeCompare(b.name)
+    )
+
+    console.log(
+        tableData
+    );
+
+}
+const sortByReg = () => {
+    console.log(
+        tableData
+    );
+    tableData = tableData.map(
+        array => (
+            {
+                key: array.key,
+                name: array.name,
+                reg: array.reg,
+                grade: array.grade
+            }
+        )
+    ).sort((a, b) => a.reg - b.reg
+    )
+
+    console.log(
+        tableData
+    );
+}
+
+const validate = () => {
+    if (username.value === "" || grade.value === "" || reg.value === "") {
+        if (grade.value === "") {
+            document.getElementById('gradeWarning').innerText = "The Grade field cannot be blank"
+            document.getElementById('grade').focus()
+
+        }
+        if (reg.value === "") {
+            document.getElementById('regNoWarning').innerText = "The Reg field cannot be blank"
+            document.getElementById('reg').focus()
+
+        }
+        if (username.value === "") {
+            document.getElementById('userNameWarning').innerText = "The Name field cannot be blank"
+            document.getElementById('username').focus()
+
+        }
+
+
+        return false
+    }
+    else return true
+}
+
+const disableWarning_userName = () => {
+    userNameWarning.innerHTML = "";
+}
+const disableWarning_regNo = () => {
+    regNoWarning.innerHTML = "";
+}
+const disableWarning_grade = () => {
+    gradeWarning.innerHTML = "";
+}
+
+const clearForm = () => {
+    document.getElementById('myForm').reset()
+
+}
+
 function sortTable(n) {
   let table;
-  val++;
+val++;
   table = document.getElementById("tableData");
   var rows,
     i,
@@ -90,15 +165,16 @@ function sortTable(n) {
     y,
     count = 0;
   var switching = true;
-  if (val % 2 == 0) {
-    var direction = "asc";
-  } else {
+  if(val%2==0){
+  var direction = "asc";
+  }
+  else{
     var direction = "desc";
   }
   while (switching) {
     switching = false;
     var rows = table.rows;
-    for (i = 1; i < rows.length - 1; i++) {
+    for (i = 1; i < rows.length-1; i++) {
       var Switch = false;
       x = rows[i].getElementsByTagName("td")[n];
       y = rows[i + 1].getElementsByTagName("td")[n];
@@ -118,6 +194,7 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       count++;
+      
     } else {
       if (count == 0 && direction == "asc") {
         direction = "desc";
@@ -126,19 +203,13 @@ function sortTable(n) {
     }
   }
   var rows = table.rows;
-  for (i = 1; i < rows.length; i++) {
-    x = rows[i].getElementsByTagName("td")[0];
-    x.innerHTML = i;
-    console.log(x.innerHTML);
-  }
-}
-function deleteData() {
-  const parent = document.getElementById("tbodyEle");
-
-  while(parent.firstChild)
+  for (i = 1; i < rows.length; i++)
   {
-      parent.innerHTML="";
-  }
- 
+    x = rows[i].getElementsByTagName("td")[0];
+    x.innerHTML=i;
+    
   
+}
+
+
 }

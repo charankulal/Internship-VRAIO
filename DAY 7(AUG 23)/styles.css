@@ -1,13 +1,14 @@
 .row{
-    padding-left: 35%;
+    padding-left: 30%;
+    width: 75%;
 }
 .buttons{
     padding-left: 35%;
 }
 #tableData{
-    width: 50%;
-    margin-left: 25%;
-    display: none;
+    width: 60%;
+    margin-left: 20%;
+    /* display: none; */
 }
 .button{
     padding-left: 45%;
@@ -19,4 +20,25 @@
 .bi{
     cursor: pointer;
 }
+h2{
+    display: none;
+}
+.sl_no{
+    width: 6%;
+}
+.name{
+    width: 10%;
+}
+.reg_no{
+    width: 6%;
+}
+.grade{
+    width: 10%;
+}
+.actions{
+    width: 10%;
+}
+/* th{
+    width: 7%;
+} */
 
