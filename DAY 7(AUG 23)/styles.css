@@ -16,4 +16,7 @@
 #button{
     display: none;
 }
+.bi{
+    cursor: pointer;
+}
 
