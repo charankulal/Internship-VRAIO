@@ -36,7 +36,7 @@ function addTableRow() {
     let deleteButton=document.createElement('BUTTON');
     deleteButton.setAttribute("class","mx-2 btn btn-danger")
     let editButton=document.createElement('BUTTON');
-    deleteButton.setAttribute("class","mx-2 btn btn-info")
+    editButton.setAttribute("class","mx-2 btn btn-secondary")
     let deleteText = document.createTextNode("Delete");
     let editText = document.createTextNode("Edit");
     
