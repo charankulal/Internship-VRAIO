@@ -13,7 +13,7 @@
 <body>
     <div class="row">
       <h1 class="mx-5">Student Details Form</h1>
-    <form class=" form w-50 " onsubmit="reset();submitFormReturn();return false;">
+    <form class="w-50" id="form" onsubmit="reset();submitFormReturn();return false;">
         <div class="col-12 ">
           <label for="userName" class="form-label">Name</label>
           <input type="text" class="form-control" id="userName" onkeypress="disableWarning_userName()">
@@ -38,8 +38,8 @@
             <span class="text-danger" id="gradeWarning"></span>
           </div>
         <div class="buttons">
-        <button type="reset" class="btn btn-success m-2" id="submit" onclick="addTableRow();">Submit</button>
-        <button type="reset" class="btn btn-secondary m-2" id="reset">Reset</button>
+        <button type="button" class="btn btn-success m-2" id="submit" onclick="addTableRow();">Submit</button>
+        <button type="reset" class="btn btn-secondary m-2"  id="reset1">Reset</button>
     </div>
       </form>
     </div>
@@ -62,7 +62,8 @@
         </tr>
        </table>
        <div class="button py-5 justify-content-center">
-       <button  type="button" class="btn btn-danger" id="button" onClick="window.location.reload();">Clear</button>
+       
+       <button  type="button" class="btn btn-danger" id="button" onClick="deleteData();">Clear</button>
        </div>
 
      </div>
