@@ -1,5 +1,5 @@
 let val = 0;
-var pivot=[]
+var pivot = [];
 const table = document.getElementById("tableData");
 const username = document.getElementById("username");
 const reg = document.getElementById("reg");
@@ -22,7 +22,7 @@ const submitAction = () => {
     };
     tableData.push(data);
     clearForm();
-    sortTable(1)
+    sortTable(1);
     displayTable();
     table.style.display = "table";
     header.style.display = "block";
@@ -35,7 +35,7 @@ const displayTable = () => {
     console.log(element);
     x = document.createElement("TR");
     x.setAttribute("id", `row${element.key}`);
-    x.innerHTML = `<tr><td>${sl}</td><td>${element.name}</td><td>${element.reg}</td><td>${element.grade}</td><td colspan="2"><div class="row g-2 "><div class="col-6 justify-content-center"><button class="btn w-100 btn-success" id="edit" onclick="editData(${element.key})">Edit</button></div><div class="col-6"><button onclick="deleteData(${element.key})" class="btn w-100 btn-danger" id="edit">Delete</button></div> </div></td></tr>`;
+    x.innerHTML = `<tr><td>${sl}</td><td>${element.name}</td><td>${element.reg}</td><td>${element.grade}</td><td colspan="2"><div class="row g-2 "><div class="col-6 justify-content-center"><button class="btn w-100 btn-success" id="edit" onclick="editData(${element.key})">Edit</button></div><div class="col-6"><button onclick="deleteData(${element.key})" class="btn w-100 btn-danger" id="delete">Delete</button></div> </div></td></tr>`;
     tableBody.appendChild(x);
     i++;
   });
@@ -53,25 +53,32 @@ const deleteData = (key) => {
 };
 
 const editData = (key) => {
-    console.log(key)
+  // console.log(key)
   let row = document.getElementById(`row${key}`);
   for (i = 1; i < row.cells.length - 1; i++) {
     x = document.createElement("input");
     x.setAttribute("type", "text");
     x.setAttribute("class", "w-100");
+    x.setAttribute("id", `row${key}input${i}`);
+    
     x.setAttribute("oninput", "inputChange()");
     x.setAttribute("value", row.cells[i].innerHTML);
-    pivot.concat(row.cells[i].innerHTML)
+    pivot.concat(row.cells[i].innerHTML);
     row.cells[i].innerHTML = "";
     row.cells[i].appendChild(x);
   }
-  row.cells[i].innerHTML = "";
+  
+  var edit = document.getElementById("edit");
+  edit.style.display = "none";
+  var deleteBtn = document.getElementById("delete");
+  deleteBtn.style.display = "none";
   var m = document.createElement("BUTTON");
   m.setAttribute("class", "btn  btn-primary mx-2");
   m.setAttribute("id", "updateButton");
-  m.setAttribute("onclick", "updateData(key)");
+  m.setAttribute("onclick", `updateData(${key})`);
   m.textContent = "Update";
-console.log(key)
+  m.style.display = "none";
+
   var n = document.createElement("BUTTON");
   n.setAttribute("class", "btn  btn-danger mx-2");
   n.setAttribute("id", "cancelButton");
@@ -81,8 +88,21 @@ console.log(key)
   row.cells[i].appendChild(m);
 
   row.cells[i].appendChild(n);
+  row.cells[i].style.display = "block";
 };
-console.log(pivot)
+function updateData(key) {
+  let row = document.getElementById(`row${key}`);
+  for (i = 1; i < row.cells.length - 1; i++) {
+    var UpdatedValue=document.getElementById(`row${key}input${i}`).value;
+    console.log(UpdatedValue);
+    x = document.createElement("p");
+    x.setAttribute("type", "text");
+    x.setAttribute("value", UpdatedValue);
+    
+    row.cells[i].innerHTML = "";
+    row.cells[i].appendChild(x);
+  }
+}
 
 const validate = () => {
   if (username.value === "" || grade.value === "" || reg.value === "") {
@@ -170,4 +190,16 @@ function sortTable(n) {
     x = rows[i].getElementsByTagName("td")[0];
     x.innerHTML = i;
   }
+}
+function Warning_userName() {
+  userNameWarning.innerHTML = "Enter the Valid Name(Hint Alphabets Only)";
+}
+
+function Warning_grade() {
+  gardeWarning.innerHTML = "Enter Numbers from 0 to 100";
+}
+
+function inputChange() {
+  var updateButton = document.getElementById("updateButton");
+  updateButton.style.display = "inline-block";
 }
