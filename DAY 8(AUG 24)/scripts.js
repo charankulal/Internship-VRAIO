@@ -1,5 +1,6 @@
 let val = 0;
 var pivot = [];
+key=0;
 const table = document.getElementById("tableData");
 const username = document.getElementById("username");
 const reg = document.getElementById("reg");
@@ -63,10 +64,11 @@ const editData = (key) => {
     
     x.setAttribute("oninput", "inputChange()");
     x.setAttribute("value", row.cells[i].innerHTML);
-    pivot.concat(row.cells[i].innerHTML);
+    pivot[i]=row.cells[i].innerHTML
     row.cells[i].innerHTML = "";
     row.cells[i].appendChild(x);
   }
+  console.log(pivot)
   
   var edit = document.getElementById("edit");
   edit.style.display = "none";
@@ -82,7 +84,7 @@ const editData = (key) => {
   var n = document.createElement("BUTTON");
   n.setAttribute("class", "btn  btn-danger mx-2");
   n.setAttribute("id", "cancelButton");
-  n.setAttribute("onclick", "cancelUpdatation()");
+  n.setAttribute("onclick", `cancelUpdatation(${key})`);
   n.textContent = "Cancel";
 
   row.cells[i].appendChild(m);
@@ -90,18 +92,33 @@ const editData = (key) => {
   row.cells[i].appendChild(n);
   row.cells[i].style.display = "block";
 };
+
+function cancelUpdatation(key) {
+
+  let row = document.getElementById(`row${key}`);
+  for (i = 1; i < row.cells.length - 1; i++) {
+    x = document.createElement("td");
+    x.setAttribute("type", "text");
+    x.innerHTML=pivot[i];
+    
+    row.cells[i].innerHTML = "";
+    row.cells[i].appendChild(x);
+    
+}
+}
 function updateData(key) {
   let row = document.getElementById(`row${key}`);
   for (i = 1; i < row.cells.length - 1; i++) {
     var UpdatedValue=document.getElementById(`row${key}input${i}`).value;
-    console.log(UpdatedValue);
-    x = document.createElement("p");
+ x = document.createElement("td");
     x.setAttribute("type", "text");
-    x.setAttribute("value", UpdatedValue);
+    x.innerHTML=UpdatedValue;
     
     row.cells[i].innerHTML = "";
     row.cells[i].appendChild(x);
+    
   }
+  
 }
 
 const validate = () => {
