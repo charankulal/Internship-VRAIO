@@ -1,5 +1,5 @@
 let val = 0;
-
+var pivot=[]
 const table = document.getElementById("tableData");
 const username = document.getElementById("username");
 const reg = document.getElementById("reg");
@@ -22,7 +22,7 @@ const submitAction = () => {
     };
     tableData.push(data);
     clearForm();
-    sortByReg();
+    sortTable(1)
     displayTable();
     table.style.display = "table";
     header.style.display = "block";
@@ -30,7 +30,7 @@ const submitAction = () => {
 };
 const displayTable = () => {
   tableBody.innerHTML = "";
-  let sl = 1;
+  let sl = "";
   tableData.forEach((element) => {
     console.log(element);
     x = document.createElement("TR");
@@ -53,6 +53,7 @@ const deleteData = (key) => {
 };
 
 const editData = (key) => {
+    console.log(key)
   let row = document.getElementById(`row${key}`);
   for (i = 1; i < row.cells.length - 1; i++) {
     x = document.createElement("input");
@@ -60,6 +61,7 @@ const editData = (key) => {
     x.setAttribute("class", "w-100");
     x.setAttribute("oninput", "inputChange()");
     x.setAttribute("value", row.cells[i].innerHTML);
+    pivot.concat(row.cells[i].innerHTML)
     row.cells[i].innerHTML = "";
     row.cells[i].appendChild(x);
   }
@@ -67,9 +69,9 @@ const editData = (key) => {
   var m = document.createElement("BUTTON");
   m.setAttribute("class", "btn  btn-primary mx-2");
   m.setAttribute("id", "updateButton");
-  m.setAttribute("onclick", "updateData()");
+  m.setAttribute("onclick", "updateData(key)");
   m.textContent = "Update";
-
+console.log(key)
   var n = document.createElement("BUTTON");
   n.setAttribute("class", "btn  btn-danger mx-2");
   n.setAttribute("id", "cancelButton");
@@ -80,6 +82,7 @@ const editData = (key) => {
 
   row.cells[i].appendChild(n);
 };
+console.log(pivot)
 
 const validate = () => {
   if (username.value === "" || grade.value === "" || reg.value === "") {
