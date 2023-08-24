@@ -21,24 +21,24 @@
     cursor: pointer;
 }
 h2{
-    display: none;
+    /* display: none; */
+    padding-left: 40%;
 }
 .sl_no{
     width: 6%;
 }
 .name{
-    width: 10%;
+    width: 20%;
 }
 .reg_no{
-    width: 6%;
+    width: 20%;
 }
 .grade{
-    width: 10%;
+    width: 12%;
 }
 .actions{
-    width: 10%;
+    width: 35%;
 }
-/* th{
-    width: 7%;
-} */
+
+
 

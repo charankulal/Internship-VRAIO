@@ -16,9 +16,7 @@ let i = 0
 
 const submitAction = () => {
     if (validate()) {
-        console.log(
-            document.getElementById('username').value
-        );
+        
         let data = {
             key: i,
             name: username.value,
@@ -52,13 +50,12 @@ const deleteData = (key) => {
     tableData.splice(tableData.findIndex(object => {
         return object.key === key
     }),1)
-    console.log(tableData)
     displayTable()
 }
 
-const inputChange=()=>{
-    alert("editing")
-}
+// const inputChange=()=>{
+//     alert("editing")
+// }
 
 
 const editData=(key)=>{
@@ -72,6 +69,23 @@ const editData=(key)=>{
         row.cells[i].innerHTML=""
         row.cells[i].appendChild(x)
     }
+    row.cells[i].innerHTML=""
+    var m=document.createElement('BUTTON');
+    m.setAttribute("class","btn  btn-primary mx-2")
+    m.setAttribute("id","updateButton")
+    m.setAttribute("onclick","updateData()")
+    m.textContent="Update"
+
+    var n=document.createElement('BUTTON');
+    n.setAttribute("class","btn  btn-danger mx-2")
+    n.setAttribute("id","cancelButton")
+    n.setAttribute("onclick","cancelUpdatation()")
+    n.textContent="Cancel"
+    
+    row.cells[i].appendChild(m);
+
+    row.cells[i].appendChild(n);
+     
 }
 
 const sortByName = () => {
