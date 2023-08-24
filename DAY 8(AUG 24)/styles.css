@@ -17,7 +17,7 @@
 #button{
     display: none;
 }
-.bi{
+.icons{
     cursor: pointer;
     border: 1px solid black;
     border-radius: 2px;
@@ -25,7 +25,7 @@
 }
 h2{
     display: none;
-    padding-left: 40%;
+    margin-left: 30%;
 }
 .sl_no{
     width: 6%;

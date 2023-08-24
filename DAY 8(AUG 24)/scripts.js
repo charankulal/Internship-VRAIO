@@ -9,7 +9,10 @@ const reset_btn = document.getElementById("reset_btn");
 const tableBody = document.getElementById("tableBody");
 const table = document.getElementById("tableData");
 const header = document.getElementById("tableHeader");
-const clearButton=document.getElementById('clearButton')
+const clearButton=document.getElementById('clearButton');
+const mydiv=document.getElementById('mydiv')
+const searchdiv=document.getElementById('searchdiv')
+
 let tableData = [];
 let savedData = [];
 let i = 0;
@@ -30,6 +33,8 @@ function submitAction() {
     table.style.display = "table";
     header.style.display = "block";
     clearButton.style.display="block"
+    searchdiv.removeAttribute("class")
+    searchdiv.setAttribute("class","d-flex mx-4")
   }
 }
 
@@ -190,33 +195,46 @@ function updateData(keyValue) {
     .setAttribute("class", "d-block col-6 justify-content-center");
 }
 
-// // action on search
-// function searchData(){
-//     searchValue = document.getElementById('search').value.toString().trim()
-//     if (!searchValue.localeCompare(""))
-//         displayTable(tableData)
-//     else {
-//         let result = filterBySearch(tableData, searchValue)
-//         if (result.length > 0)
-//             displayTable(result)
-//         else {
-//             x = document.createElement('TR')
-//             x.innerHTML = `<tr><td colspan="6">No result found for the search "${searchValue}"</td></tr>`
-//             tableBody.innerHTML = ""
-//             tableBody.appendChild(x)
-//         }
+// action on search
+function searchData(){
+    searchValue = document.getElementById('search').value.toString().trim()
+    if (!searchValue.localeCompare("")){
+        displayTable(tableData)
+        document.getElementById('para').innerHTML=""
+    }
+    else {
+        let result = filterBySearch(tableData, searchValue)
+        if (result.length > 0){
+            displayTable(result)
+            document.getElementById('para').innerHTML=""
+        }
+        else {
+           x=document.getElementById('para')
+           if(!x){
+            x = document.createElement('p')
+            x.setAttribute("class","text text-danger")
+            x.setAttribute("id","para")
+            x.innerHTML = "No result found "
+            tableBody.innerHTML = ""
+            mydiv.appendChild(x)
+           }
+           else{
+            x.innerHTML = "No result found "
+            tableBody.innerHTML = ""
+            mydiv.appendChild(x)
+           }
+        }
+      }
+}
 
-//     }
-// }
-
-// // filters the table-data object by search-value
-// function filterBySearch(arr, searchKey){
-//     return arr.filter((obj) => {
-//         return Object.keys(obj).some((keyValue) => {
-//             return obj[keyValue].toString().includes(searchKey);
-//         })
-//     });
-// }
+// filters the table-data object by search-value
+function filterBySearch(arr, searchKey){
+    return arr.filter((obj) => {
+        return Object.keys(obj).some((keyValue) => {
+            return obj[keyValue].toString().includes(searchKey);
+        })
+    });
+}
 
 function sortTable(n) {
   let table;
