@@ -1,0 +1,44 @@
+.row{
+    padding-left: 30%;
+    width: 75%;
+}
+.buttons{
+    padding-left: 35%;
+}
+#tableData{
+    width: 60%;
+    margin-left: 20%;
+    /* display: none; */
+}
+.button{
+    padding-left: 45%;
+    
+}
+#button{
+    display: none;
+}
+.bi{
+    cursor: pointer;
+}
+h2{
+    /* display: none; */
+    padding-left: 40%;
+}
+.sl_no{
+    width: 6%;
+}
+.name{
+    width: 20%;
+}
+.reg_no{
+    width: 20%;
+}
+.grade{
+    width: 12%;
+}
+.actions{
+    width: 35%;
+}
+
+
+
