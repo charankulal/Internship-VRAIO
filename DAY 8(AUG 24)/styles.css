@@ -8,7 +8,7 @@
 #tableData{
     width: 60%;
     margin-left: 20%;
-    /* display: none; */
+    display: none;
 }
 .button{
     padding-left: 45%;
@@ -19,9 +19,12 @@
 }
 .bi{
     cursor: pointer;
+    border: 1px solid black;
+    border-radius: 2px;
+    background-color: aqua;
 }
 h2{
-    /* display: none; */
+    display: none;
     padding-left: 40%;
 }
 .sl_no{
@@ -40,5 +43,9 @@ h2{
     width: 35%;
 }
 
+#clearButton{
+    margin-left: 48%;
+    display: none;
+}
 
 

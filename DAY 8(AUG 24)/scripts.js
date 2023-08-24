@@ -1,173 +1,222 @@
 let val = 0;
-var pivot = [];
-key=0;
-const table = document.getElementById("tableData");
+let statusMode = "normal";
+const comment = document.getElementById("comment");
 const username = document.getElementById("username");
-const reg = document.getElementById("reg");
+const regNo = document.getElementById("regNo");
 const grade = document.getElementById("grade");
 const submit = document.getElementById("submit");
 const reset_btn = document.getElementById("reset_btn");
 const tableBody = document.getElementById("tableBody");
+const table = document.getElementById("tableData");
 const header = document.getElementById("tableHeader");
+const clearButton=document.getElementById('clearButton')
 let tableData = [];
-
+let savedData = [];
 let i = 0;
 
-const submitAction = () => {
+function submitAction() {
   if (validate()) {
     let data = {
-      key: i,
+      keyValue: i,
       name: username.value,
-      reg: reg.value,
+      regNo: regNo.value,
       grade: grade.value,
     };
+    i++;
     tableData.push(data);
     clearForm();
     sortTable(1);
-    displayTable();
+    displayTable(tableData);
     table.style.display = "table";
     header.style.display = "block";
+    clearButton.style.display="block"
   }
-};
-const displayTable = () => {
+}
+
+function displayTable(obj) {
   tableBody.innerHTML = "";
-  let sl = "";
-  tableData.forEach((element) => {
-    console.log(element);
+  let sl = 1;
+  obj.forEach((element) => {
     x = document.createElement("TR");
-    x.setAttribute("id", `row${element.key}`);
-    x.innerHTML = `<tr><td>${sl}</td><td>${element.name}</td><td>${element.reg}</td><td>${element.grade}</td><td colspan="2"><div class="row g-2 "><div class="col-6 justify-content-center"><button class="btn w-100 btn-success" id="edit" onclick="editData(${element.key})">Edit</button></div><div class="col-6"><button onclick="deleteData(${element.key})" class="btn w-100 btn-danger" id="delete">Delete</button></div> </div></td></tr>`;
+    x.setAttribute("id", `row${element.keyValue}`);
+    x.innerHTML = `<tr><td>${sl}</td><td>${element.name}</td><td>${element.regNo}</td><td>${element.grade}</td><td colspan="2"><div class="row g-2 ">
+<div id="update${element.keyValue}"  class="d-none col-6"><button class="btn w-100 px-2 btn-secondary" onclick="updateData(${element.keyValue})">Update</button></div>
+<div id="edit${element.keyValue}" class="d-inline col-6"><button class="btn w-100 btn-primary"  onclick="editData(${element.keyValue})">Edit</button></div>
+<div id="cancel${element.keyValue}" class="d-none col-12"><button class="btn w-100 btn-danger"  onclick="cancelEdit(${element.keyValue})">Cancel</button></div>
+<div id="delete${element.keyValue}" class="d-inline col-6"><button class="btn w-100 btn-danger onclick="deleteData(${element.keyValue})" " >Delete</button></div> </div></td></tr>`;
     tableBody.appendChild(x);
-    i++;
+    sl++;
   });
-  sortTable(1);
-};
+}
 
-const deleteData = (key) => {
-  tableData.splice(
-    tableData.findIndex((object) => {
-      return object.key === key;
-    }),
-    1
-  );
-  displayTable();
-};
-
-const editData = (key) => {
-  
-  let row = document.getElementById(`row${key}`);
-  for (i = 1; i < row.cells.length - 1; i++) {
-    x = document.createElement("input");
-    x.setAttribute("type", "text");
-    x.setAttribute("class", "w-100");
-    x.setAttribute("id", `row${key}input${i}`);
-    x.innerHTML=row.cells[i].innerHTML;
-    x.setAttribute("oninput", "inputChange()");
-    x.setAttribute("value", row.cells[i].innerHTML);
-    pivot[i]=row.cells[i].innerHTML
-    // var element = document.getElementById(`row${key}input${i}`);
-    // element.remove();
-    row.cells[i].innerHTML = "";
-    row.cells[i].appendChild(x);
+function deleteData(keyValue) {
+  if (!statusMode.localeCompare("normal")) {
+    tableData.splice(
+      tableData.findIndex((object) => {
+        return object.keyValue === keyValue;
+      }),
+      1
+    );
+    displayTable(tableData);
   }
-
-  
-  var edit = document.getElementById("edit");
-  edit.style.display = "none";
-  var deleteBtn = document.getElementById("delete");
-  deleteBtn.style.display = "none";
-  var m = document.createElement("BUTTON");
-  m.setAttribute("class", "btn  btn-primary mx-2");
-  m.setAttribute("id", "updateButton");
-  m.setAttribute("onclick", `updateData(${key})`);
-  m.textContent = "Update";
-  m.style.display = "none";
-
-  var n = document.createElement("BUTTON");
-  n.setAttribute("class", "btn  btn-danger mx-2");
-  n.setAttribute("id", "cancelButton");
-  n.setAttribute("onclick", `cancelUpdatation(${key})`);
-  n.textContent = "Cancel";
-
-  row.cells[i].appendChild(m);
-
-  row.cells[i].appendChild(n);
-  row.cells[i].style.display = "block";
-};
-
-function cancelUpdatation(key) {
-
-  let row = document.getElementById(`row${key}`);
-  for (i = 1; i < row.cells.length - 1; i++) {
-    x = document.createElement("td");
-    x.setAttribute("type", "text");
-    x.innerHTML=pivot[i];
-    
-    row.cells[i].innerHTML = "";
-    row.cells[i].appendChild(x);
-    
-}
-}
-function updateData(key) {
-  let row = document.getElementById(`row${key}`);
-  for (i = 1; i < row.cells.length - 1; i++) {
-    var UpdatedValue=document.getElementById(`row${key}input${i}`).value;
- x = document.createElement("td");
-    x.setAttribute("type", "text");
-    x.innerHTML=UpdatedValue;
-    
-    row.cells[i].innerHTML = "";
-    row.cells[i].appendChild(x);
-    
-  }
-  var updateButton = document.getElementById("updateButton");
-  updateButton.style.display = "none";
-  var cancelButton = document.getElementById("cancelButton");
-  cancelButton.style.display = "none";
-
-  var edit = document.getElementById("edit");
-  edit.style.display = "inline-block";
-  var deleteBtn = document.getElementById("delete");
-  deleteBtn.style.display = "inline-block";
-  
-  
 }
 
-const validate = () => {
-  if (username.value === "" || grade.value === "" || reg.value === "") {
+function validate() {
+  if (username.value === "" || grade.value === "" || regNo.value === "") {
     if (grade.value === "") {
       document.getElementById("gradeWarning").innerText =
         "The Grade field cannot be blank";
       document.getElementById("grade").focus();
     }
-    if (reg.value === "") {
+    if (regNo.value === "") {
       document.getElementById("regNoWarning").innerText =
-        "The Reg field cannot be blank";
-      document.getElementById("reg").focus();
+        "The Registration Number field cannot be blank";
+      document.getElementById("regNo").focus();
     }
     if (username.value === "") {
       document.getElementById("userNameWarning").innerText =
         "The Name field cannot be blank";
       document.getElementById("username").focus();
     }
-
     return false;
   } else return true;
-};
+}
 
-const disableWarning_userName = () => {
-  userNameWarning.innerHTML = "";
-};
-const disableWarning_regNo = () => {
+function disableWarning_userName() {
+  if(!document.getElementById("username").blur())
+  document.getElementById("userNameWarning").innerText =
+        "";
+        document.getElementById("username").focus()
+}
+
+function disableWarning_regNo() {
   regNoWarning.innerHTML = "";
-};
-const disableWarning_grade = () => {
-  gradeWarning.innerHTML = "";
-};
+}
 
-const clearForm = () => {
-  document.getElementById("myForm").reset();
-};
+function disableWarning_grade() {
+  
+  gradeWarning.innerHTML = "";
+  
+}
+
+document.getElementById("grade").onkeydown = function() {
+  var input = parseInt(this.value);
+  if (input < 0 || input > 100)
+    console.log("Value should be between 0 - 100");
+  return;
+}
+
+function editData(keyValue) {
+  if (!statusMode.localeCompare("normal")) {
+    statusMode = "editing";
+    document
+      .getElementById(`edit${keyValue}`)
+      .setAttribute("class", "d-none col-6 justify-content-center");
+    document
+      .getElementById(`delete${keyValue}`)
+      .setAttribute("class", "d-none col-6 justify-content-center");
+    document
+      .getElementById(`cancel${keyValue}`)
+      .setAttribute("class", "d-block col-12 justify-content-center");
+    let row = document.getElementById(`row${keyValue}`);
+    for (i = 1; i < row.cells.length - 1; i++) {
+      savedData[i] = row.cells[i].innerHTML;
+      x = document.createElement("input");
+      x.setAttribute("type", "text");
+      x.setAttribute("id", `input${i}`);
+      x.setAttribute("class", "w-100");
+      x.setAttribute("oninput", `onInputChange(${keyValue})`);
+      x.setAttribute("value", row.cells[i].innerHTML);
+      row.cells[i].innerHTML = "";
+      row.cells[i].appendChild(x);
+    }
+  }
+}
+
+function onInputChange(keyValue) {
+  if (!statusMode.localeCompare("editing")) {
+    statusMode = "updating";
+    document
+      .getElementById(`update${keyValue}`)
+      .setAttribute("class", "d-block col-6 justify-content-center");
+    document
+      .getElementById(`cancel${keyValue}`)
+      .setAttribute("class", "d-block col-6 justify-content-center");
+  }
+}
+
+function cancelEdit(keyValue) {
+  statusMode = "normal";
+  let row = document.getElementById(`row${keyValue}`);
+  dataIndex = tableData.findIndex((object) => {
+    return object.keyValue === keyValue;
+  });
+  for (i = 1; i < row.cells.length - 1; i++) {
+    row.cells[i].innerHTML = savedData[i];
+  }
+  document
+    .getElementById(`update${keyValue}`)
+    .setAttribute("class", "d-none col-6 justify-content-center");
+  document
+    .getElementById(`cancel${keyValue}`)
+    .setAttribute("class", "d-none col-6 justify-content-center");
+  document
+    .getElementById(`edit${keyValue}`)
+    .setAttribute("class", "d-block col-6 justify-content-center");
+  document
+    .getElementById(`delete${keyValue}`)
+    .setAttribute("class", "d-block col-6 justify-content-center");
+}
+
+function updateData(keyValue) {
+  statusMode = "normal";
+  let row = document.getElementById(`row${keyValue}`);
+
+  for (i = 1; i < row.cells.length - 1; i++) {
+    inputvalue = document.getElementById(`input${i}`).value;
+    row.cells[i].innerHTML = inputvalue;
+  }
+  document
+    .getElementById(`update${keyValue}`)
+    .setAttribute("class", "d-none col-6 justify-content-center");
+  document
+    .getElementById(`cancel${keyValue}`)
+    .setAttribute("class", "d-none col-6 justify-content-center");
+  document
+    .getElementById(`edit${keyValue}`)
+    .setAttribute("class", "d-block col-6 justify-content-center");
+  document
+    .getElementById(`delete${keyValue}`)
+    .setAttribute("class", "d-block col-6 justify-content-center");
+}
+
+// // action on search
+// function searchData(){
+//     searchValue = document.getElementById('search').value.toString().trim()
+//     if (!searchValue.localeCompare(""))
+//         displayTable(tableData)
+//     else {
+//         let result = filterBySearch(tableData, searchValue)
+//         if (result.length > 0)
+//             displayTable(result)
+//         else {
+//             x = document.createElement('TR')
+//             x.innerHTML = `<tr><td colspan="6">No result found for the search "${searchValue}"</td></tr>`
+//             tableBody.innerHTML = ""
+//             tableBody.appendChild(x)
+//         }
+
+//     }
+// }
+
+// // filters the table-data object by search-value
+// function filterBySearch(arr, searchKey){
+//     return arr.filter((obj) => {
+//         return Object.keys(obj).some((keyValue) => {
+//             return obj[keyValue].toString().includes(searchKey);
+//         })
+//     });
+// }
 
 function sortTable(n) {
   let table;
@@ -231,4 +280,12 @@ function Warning_grade() {
 function inputChange() {
   var updateButton = document.getElementById("updateButton");
   updateButton.style.display = "inline-block";
+}
+
+function clearForm() {
+  document.getElementById("myForm").reset();
+}
+
+function clearTheTable(){
+  location.reload()
 }
