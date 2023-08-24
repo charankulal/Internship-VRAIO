@@ -54,21 +54,23 @@ const deleteData = (key) => {
 };
 
 const editData = (key) => {
-  // console.log(key)
+  
   let row = document.getElementById(`row${key}`);
   for (i = 1; i < row.cells.length - 1; i++) {
     x = document.createElement("input");
     x.setAttribute("type", "text");
     x.setAttribute("class", "w-100");
     x.setAttribute("id", `row${key}input${i}`);
-    
+    x.innerHTML=row.cells[i].innerHTML;
     x.setAttribute("oninput", "inputChange()");
     x.setAttribute("value", row.cells[i].innerHTML);
     pivot[i]=row.cells[i].innerHTML
+    // var element = document.getElementById(`row${key}input${i}`);
+    // element.remove();
     row.cells[i].innerHTML = "";
     row.cells[i].appendChild(x);
   }
-  console.log(pivot)
+
   
   var edit = document.getElementById("edit");
   edit.style.display = "none";
@@ -118,6 +120,16 @@ function updateData(key) {
     row.cells[i].appendChild(x);
     
   }
+  var updateButton = document.getElementById("updateButton");
+  updateButton.style.display = "none";
+  var cancelButton = document.getElementById("cancelButton");
+  cancelButton.style.display = "none";
+
+  var edit = document.getElementById("edit");
+  edit.style.display = "inline-block";
+  var deleteBtn = document.getElementById("delete");
+  deleteBtn.style.display = "inline-block";
+  
   
 }
 
