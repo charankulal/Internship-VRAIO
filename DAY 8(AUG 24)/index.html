@@ -86,21 +86,34 @@
       <div class="row my-3" id="mydiv">
         <h2 id="tableHeader">Student Information</h2>
         <div class="d-none mx-4" id="searchdiv">
-            <button type="button" class="btn btn-light col-1">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="dark" onclick="searchData()" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-              </button>
+            
           <input
             placeholder="Type to search"
             type="text"
-            class="form-control col-11"
+            class="form-control col-4"
             id="search"
-            onkeypress="searchData()"
+            onkeypress="searchData();"
             autocomplete="off"
           />
+          <button type="button" class="btn btn-warning col-2 d-inline-flex mx-3" onclick="searchData()">
+            Search
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="dark"  class="bi bi-search mx-3" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            
+          </button>
+
+          <button type="button" class="btn btn-danger col-2 d-inline-flex" onclick="clearSearchData()">
+            Clear
+              
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"  fill="currentColor" class="bi bi-x-circle-fill mx-2" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+            </svg>
+            
+          </button>
           
         </div>
+        <p class="text text-danger" id="para"></p>
       </div>
       <table
         id="tableData"
