@@ -27,7 +27,7 @@
             class="form-control"
             id="username"
             onkeypress="disableWarning_userName()"
-            onkeydown="Warning_userName();return /[a-zA-Z\s]/i.test(event.key)"
+            onkeydown="Warning_userName();return /[a-zA-Z\s\v\t]/i.test(event.key)"
           />
         </div>
         <div class="mb-3">
