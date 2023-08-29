@@ -4,7 +4,7 @@
 // } from "react-router-dom";
 
 function App() {
-  let imageUrl="https://github.com/charankulal/Internship-VRAIO/blob/master/DAY%203(AUG%2017)/Assignment%202/Thumbnail.jpg";
+  // let imageUrl="https://github.com/charankulal/Internship-VRAIO/blob/master/DAY%203(AUG%2017)/Assignment%202/Thumbnail.jpg";
   return (
     
     
