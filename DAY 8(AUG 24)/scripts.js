@@ -39,6 +39,7 @@ function submitAction() {
     clearButton.style.display="block"
     searchdiv.removeAttribute("class")
     searchdiv.setAttribute("class","d-flex mx-4")
+    statusMode = "normal";
   }
 }
 /**
@@ -69,7 +70,7 @@ function displayTable(obj) {
       x.innerHTML = `<tr>
       <td>${sl}</td>
       <td>${element.name}</td>
-      <td>${element.reg}</td>
+      <td>${element.regNo}</td>
       <td>${element.grade}</td>
       <td colspan="2">
           <div class="row g-2 ">
@@ -101,6 +102,7 @@ function displayTable(obj) {
  * `tableData` array that needs to be deleted.
  */
 function deleteData(keyValue) {
+  if (confirm("Alert! This action will clear entire row!")) {
   if (!statusMode.localeCompare("normal")) {
     tableData.splice(tableData.findIndex(object => {
         return object.keyValue === keyValue
@@ -110,6 +112,7 @@ function deleteData(keyValue) {
 if (!tableData.length > 0) {
     clearTableBtn.style.display = "none"
 }
+  }
 }
 
 /**
