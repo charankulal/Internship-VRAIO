@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import Header from "./Components/Header";
-export  default class App extends Component {
-  render(){
+
+
+function App() {
+  
     return (
     <div className="App">
       <section className="jumbotron text-center">
@@ -315,6 +317,6 @@ export  default class App extends Component {
     </div>
   );
 }
-}
 
+export default App;
 
