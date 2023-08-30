@@ -7,7 +7,7 @@ function App() {
     return (
     <div className="App">
       <section className="jumbotron text-center">
-        <Header  />
+        <Header title="Album example"/>
       </section>
       <div className="album py-5 bg-light">
         <div className="container">
