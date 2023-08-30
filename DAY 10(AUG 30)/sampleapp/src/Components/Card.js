@@ -19,13 +19,13 @@ export default function Card(props) {
                     <div className="btn-group">
                       <button
                         type="button"
-                        className="btn btn-sm btn-outline-secondary"
+                        className="btn btn-sm btn-primary"
                       >
                         View
                       </button>
                       <button
                         type="button"
-                        className="btn btn-sm btn-outline-secondary"
+                        className="btn btn-sm btn-secondary"
                       >
                         Edit
                       </button>
