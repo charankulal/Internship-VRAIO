@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from "./Button";
 
 function  Header(props) {
   
@@ -11,9 +12,10 @@ function  Header(props) {
           libero aspernatur exercitationem alias quo maiores magni corporis
           distinctio sint in impedit, sapiente incidunt quaerat?
         </p>
-        <p>
-          <button className="btn btn-primary my-2 mx-3">Main call to action</button>
-          <button className="btn btn-secondary my-2">Secondary action</button>
+        <p className='d-inline-flex' style={{width:"30%"}}>
+          <Button  buttonName="Main Call to Action" ColorAttr="btn-primary"/>
+          <Button  buttonName="Secondary Action" ColorAttr="btn-secondary"/>
+          
         </p>
       </div>
       
