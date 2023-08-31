@@ -1,7 +1,22 @@
 import React from 'react'
+import './Card.css'
 
 export default function Card(props) {
+  let backgroundofText=props.time<=5?"lightblue":"white"
+  
+
+  // if (props.time<=5)
+  // {
+  //   backgroundofText="lightblue";
+  // }
+  // else
+  // {
+  //   backgroundofText="white"
+  // }
+
   return (
+    
+
     
       <div className="col-md-4 d-flex" >
               <div className="card mb-4 shadow-sm">
@@ -11,7 +26,8 @@ export default function Card(props) {
                   
                   alt="Thumbnail"
                 />
-                <div className="card-body" style={{backgroundColor:props.background1}} >
+                {/* style={{backgroundColor:props.background1}} */}
+                <div className={`card-body ${backgroundofText}`}  >
                   <p className="card-text" >
                     {props.description}
                   </p>

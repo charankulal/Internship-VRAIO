@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Components/Header";
 import Card from "./Components/Card";
 
+
 function App() {
   
   // const condition = "This is my first react app";
@@ -90,7 +91,7 @@ function App() {
                   imageUrl={data.urlToImage}
                   description={data.description}
                   time={data.time}
-                  let background1={data.time<=5?"lightblue":"white"}
+                  
                   
                 />
               );
