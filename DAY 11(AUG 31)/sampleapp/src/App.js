@@ -3,6 +3,7 @@ import Header from "./Components/Header";
 import Card from "./Components/Card";
 
 function App() {
+  
   // const condition = "This is my first react app";
   const cardDetails = [
     {
@@ -11,28 +12,28 @@ function App() {
 
       urlToImage:
         "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iooubBP.J_eg/v0/1200x800.jpg",
-      time: "8 mins",
+      time: 8,
     },
     {
       description:
         "Chevron's two major liquefied natural gas (LNG) production facilities in Australia could face daily work stoppages of up to 10 hours next week after unions on Tuesday threat…",
       urlToImage:
         "https://www.reuters.com/resizer/7xmJnXc5CR9Ui56sX-xL-dXvfcE=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/JHTMZGJPUZOSHFSU25S5J3HGLY.jpg",
-      time: "10 mins",
+      time: 10,
     },
     {
       description:
         "After 35 years, the Nordstrom in downtown San Francisco has officially closed. The store is the latest in a series of retail closures in the city. NBC News’ ...",
 
       urlToImage: "https://i.ytimg.com/vi/Qp5_bobRI40/maxresdefault.jpg",
-      time: "9 mins",
+      time: 3,
     },
     {
       description:
         "Europe’s biggest economy is sliding into stagnation, and a weakening political system is struggling to find an answer",
 
       urlToImage: "https://images.wsj.net/im-841456/social",
-      time: "9 mins",
+      time: 9,
     },
     {
       description:
@@ -40,7 +41,7 @@ function App() {
 
       urlToImage:
         "https://media.cnn.com/api/v1/images/stellar/prod/230828141417-chat-gpt-062023.jpg?c=16x9&q=w_800,c_fill",
-      time: "9 mins",
+      time: 9,
     },
     {
       description:
@@ -48,7 +49,7 @@ function App() {
 
       urlToImage:
         "https://www.gannett-cdn.com/authoring/authoring-images/2023/08/13/PTCN/70584909007-microsoft-teamsimage-71.png?auto=webp&crop=1022,577,x0,y114&format=pjpg&width=1200",
-      time: "19 mins",
+      time: 1,
     },
     {
       description:
@@ -56,7 +57,7 @@ function App() {
 
       urlToImage:
         "https://media.cnn.com/api/v1/images/stellar/prod/230829090052-hawaii-fires-power-lines.jpg?c=16x9&q=w_800,c_fill",
-      time: "10 mins",
+      time: 10,
     },
     {
       description:
@@ -64,13 +65,13 @@ function App() {
 
       urlToImage:
         "https://www.tampabay.com/resizer/O35oSOZLcV_Shl1uq6M2i7Tsv58=/1200x675/smart/cloudfront-us-east-1.images.arcpublishing.com/tbt/O5HUX2SFHK3D4JBBADU5STSDV4.jpg",
-      time: "12 mins",
+      time: 12,
     },
     {
       description: "Payments expected to be made over a multiple-year span",
 
       urlToImage: "https://images.wsj.net/im-843125/social",
-      time: "14 mins",
+      time: 14,
     },
   ];
   return (
@@ -89,6 +90,8 @@ function App() {
                   imageUrl={data.urlToImage}
                   description={data.description}
                   time={data.time}
+                  let background1={data.time<=5?"lightblue":"white"}
+                  
                 />
               );
             })}

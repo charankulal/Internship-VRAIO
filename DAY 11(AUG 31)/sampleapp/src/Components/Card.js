@@ -11,8 +11,8 @@ export default function Card(props) {
                   
                   alt="Thumbnail"
                 />
-                <div className="card-body">
-                  <p className="card-text">
+                <div className="card-body" style={{backgroundColor:props.background1}} >
+                  <p className="card-text" >
                     {props.description}
                   </p>
                   <div className="d-flex justify-content-between align-items-center">
@@ -30,7 +30,7 @@ export default function Card(props) {
                         Edit
                       </button>
                     </div>
-                    <small className="text-muted">{props.time}</small>
+                    <small className="text-muted">{props.time} mins</small>
                   </div>
                 </div>
               </div>
