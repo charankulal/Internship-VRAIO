@@ -1,5 +1,6 @@
 import React from 'react'
 import './Card.css'
+import styles from './Button.module.css'
 
 export default function Card(props) {
   let backgroundofText=props.time<=5?"lightblue":"white"
@@ -35,13 +36,13 @@ export default function Card(props) {
                     <div className="btn-group">
                       <button
                         type="button"
-                        className="btn btn-sm btn-primary"
+                        className={`btn btn-sm btn-primary`}
                       >
                         View
                       </button>
                       <button
                         type="button"
-                        className="btn btn-sm btn-secondary"
+                        className={`btn btn-sm ${styles.btnsecondary}`}
                       >
                         Edit
                       </button>

@@ -13,7 +13,7 @@ function App() {
 
       urlToImage:
         "https://assets.bwbx.io/images/users/iqjWHBFdfxIU/iooubBP.J_eg/v0/1200x800.jpg",
-      time: 8,
+      time: 1,
     },
     {
       description:
@@ -42,7 +42,7 @@ function App() {
 
       urlToImage:
         "https://media.cnn.com/api/v1/images/stellar/prod/230828141417-chat-gpt-062023.jpg?c=16x9&q=w_800,c_fill",
-      time: 9,
+      time: 5,
     },
     {
       description:
@@ -66,7 +66,7 @@ function App() {
 
       urlToImage:
         "https://www.tampabay.com/resizer/O35oSOZLcV_Shl1uq6M2i7Tsv58=/1200x675/smart/cloudfront-us-east-1.images.arcpublishing.com/tbt/O5HUX2SFHK3D4JBBADU5STSDV4.jpg",
-      time: 12,
+      time: 1,
     },
     {
       description: "Payments expected to be made over a multiple-year span",
