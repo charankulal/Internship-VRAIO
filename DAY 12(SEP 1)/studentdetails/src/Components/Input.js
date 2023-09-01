@@ -9,8 +9,8 @@ export default function Input(props) {
             autoComplete="off"
             className="form-control"
             id={props.id}
-            onKeyPress={props.onkeypress}
-            onKeyDown={props.onkeydown}
+            // onKeyPress={props.onkeypress}
+            // onKeyDown={props.onkeydown}
           />
     </div>
   )

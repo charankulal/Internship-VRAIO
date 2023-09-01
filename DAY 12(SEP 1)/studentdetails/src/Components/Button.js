@@ -1,14 +1,14 @@
 import React from 'react'
 
-export default function Button() {
+export default function Button(props) {
   return (
-    <div>
+   
       <button
-            type="button"
-            className="btn btn-success"
-            id="submit"
-            onclick="submitAction()"
-          ></button>
-    </div>
+            type={props.type}
+            className={props.class}
+            id={props.id}
+            // onclick="submitAction()"
+          >{props.text}</button>
+    
   )
 }
