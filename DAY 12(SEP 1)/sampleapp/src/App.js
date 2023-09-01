@@ -4,11 +4,11 @@ import { sculptureList } from './data.js';
 export default function Gallery() {
   var [index, setIndex] = useState(0);
 
-  function handleClick() {
+  function handleNextClick() {
     if(index===11)
     {
-      index=-1
-      setIndex(index + 1)
+     
+      setIndex(0)
     }
     else{
       setIndex(index + 1);
@@ -16,13 +16,28 @@ export default function Gallery() {
 
     
   }
+  function handlePreviousClick(){
+    if(index===0)
+    {
+     
+      setIndex(11)
+    }
+    else{
+      setIndex(index - 1);
+    }
+
+  }
 
   let sculpture = sculptureList[index];
   return (
     <>
-      <button onClick={handleClick}>
+    <button onClick={handlePreviousClick}>
+        Previous
+      </button>
+      <button onClick={handleNextClick}>
         Next
       </button>
+      
       <h2>
         <i>{sculpture.name} </i> 
         by {sculpture.artist}
