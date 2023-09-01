@@ -1,13 +1,11 @@
 import './App.css';
+import Heading from './Components/Heading';
 
 function App() {
   return (
     
       <div className="container">
-      <div className="py-5 text-center">
-        
-        <h2>Checkout form</h2>
-      </div>
+      <Heading/>
 
       <div className="row">
         <div className="col-md-4 order-md-2 mb-4">
