@@ -10,7 +10,7 @@ export default function Button(props) {
       className={props.class}
       style={{ height: props.height }}
       
-      
+      onClick = {props.handleClick}
       
     >
      
