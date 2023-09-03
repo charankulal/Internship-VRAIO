@@ -8,9 +8,10 @@ export default function Table() {
         <td colSpan="4">
           <div className="col-md-12">
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder="Enter numbers"
+              readOnly
             />
           </div>
         </td>
