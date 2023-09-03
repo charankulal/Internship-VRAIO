@@ -3,18 +3,18 @@ import React from "react";
 export default function Button(props) {
     
   return (
-    <button
+    <input
       type="button"
-      name={props.text}
-      id={props.id}
+      value={props.text}
+      
       className={props.class}
       style={{ height: props.height }}
       
       
       
     >
-      {props.text}
-    </button>
+     
+    </input>
 
     
   );

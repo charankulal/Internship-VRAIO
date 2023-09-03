@@ -3,24 +3,26 @@ import Button from "./Button";
 import "./Calculator";
 
 export default function Table() {
-  
-    const [result, setResult] = useState("");
-    
-    const Clear=()=>{
-   
-            setResult("");
-        
+    var expr="";
+  var [result, setResult] = useState("");
 
+  const Clear = () => {
+    setResult("");
+  };
+  const deleteOneByOne = () => {
+    if (result.length > 1) {
+      setResult(result.slice(0, -1));
+    } else {
+      setResult("");
     }
-    const deleteOneByOne=()=>{
-        if(result.length>1){
-            setResult((prev)=>{return prev= result[0]+result.slice(2)}) 
-            }else{setResult("")}}
-    
-    
-    
+  };
 
-  
+  const handleButtonClick = (e) => {
+    setResult(result.concat(e.target.name));
+    expr.concat(e.target.name)
+    console.log(eval(expr))
+  };
+
   return (
     <table className="table ">
       <tr>
@@ -43,7 +45,7 @@ export default function Table() {
             id="AllClear"
             class="btn btn-danger col-12 m-2 "
             text="AC"
-             onClick={Clear}
+            handleClick={Clear}
           />
         </td>
         <td>
@@ -56,11 +58,20 @@ export default function Table() {
         </td>
 
         <td>
+          {/* <button
+            type="button"
+            className="btn btn-outline-secondary col-12 mx-2 my-2"
+            id="divide"
+            name="/"
+            onClick={handleButtonClick}
+          >
+            /
+          </button> */}
           <Button
             id="divide"
             class="btn btn-outline-secondary col-12 mx-2 my-2  "
             text="/"
-            // onClick={handleButtonClick()}
+            onClick={handleButtonClick}
           />
         </td>
         <td>
@@ -75,19 +86,35 @@ export default function Table() {
 
       <tr>
         <td>
+        {/* <button
+            type="button"
+            className="btn btn-outline-secondary col-12 mx-2 my-2"
+            id="seven"
+            name="7"
+            onClick={handleButtonClick}
+          >
+            7
+          </button> */}
           <Button
             id="seven"
             class="btn btn-outline-primary col-12 m-2  "
             text="7"
-            
           />
         </td>
         <td>
+        {/* <button
+            type="button"
+            className="btn btn-outline-secondary col-12 mx-2 my-2"
+            id="eight"
+            name="8"
+            onClick={handleButtonClick}
+          >
+            8
+          </button> */}
           <Button
             id="eight"
             class="btn btn-outline-primary col-12 m-2  "
             text="8"
-            
           />
         </td>
         <td>
@@ -95,7 +122,6 @@ export default function Table() {
             id="nine"
             class="btn btn-outline-primary col-12 m-2  "
             text="9"
-            
           />
         </td>
         <td>
@@ -103,7 +129,6 @@ export default function Table() {
             text="-"
             id="minus"
             class="btn btn-outline-secondary col-12 m-2  "
-            
           />
         </td>
       </tr>
@@ -113,7 +138,6 @@ export default function Table() {
           <Button
             id="four"
             class="btn btn-outline-primary col-12 m-2  "
-           
             text="4"
           />
         </td>
@@ -121,7 +145,6 @@ export default function Table() {
           <Button
             id="five"
             class="btn btn-outline-primary col-12 m-2  "
-            
             text="5"
           />
         </td>
@@ -129,7 +152,6 @@ export default function Table() {
           <Button
             id="six"
             class="btn btn-outline-primary col-12 m-2  "
-           
             text="6"
           />
         </td>
@@ -139,7 +161,6 @@ export default function Table() {
             text="+"
             id="plus"
             class="btn btn-outline-secondary col-12 m-2  "
-           
           />
         </td>
       </tr>
@@ -149,7 +170,6 @@ export default function Table() {
           <Button
             id="one"
             class="btn btn-outline-primary col-12 m-2  "
-            
             text="1"
           />
         </td>
@@ -157,7 +177,6 @@ export default function Table() {
           <Button
             id="two"
             class="btn btn-outline-primary col-12 m-2  "
-          
             text="2"
           />
         </td>
@@ -165,7 +184,6 @@ export default function Table() {
           <Button
             id="three"
             class="btn btn-outline-primary col-12 m-2  "
-         
             text="3"
           />
         </td>
