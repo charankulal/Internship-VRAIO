@@ -1,4 +1,7 @@
 import { useReducer } from "react";
+import {
+  chain,evaluate, round, sqrt
+} from 'mathjs'
 import DigitButton from "./Components/DigitButton";
 import OperationButton from "./Components/OperationButton";
 
@@ -7,7 +10,7 @@ export const ACTIONS = {
   CHOOSE_OPERATION: "choose-operation",
   CLEAR: "clear",
   DELETE_DIGIT: "delete-digit",
-  EVALUATE: "evaluate",
+  EVALUATE: "evaluat",
 };
 
 function reducer(state, { type, payload }) {
@@ -17,7 +20,7 @@ function reducer(state, { type, payload }) {
         return {
           ...state,
           currentOperand: payload.digit,
-          overwrite: false,
+          overwrite: true,
         };
       }
       if (payload.digit === "0" && state.currentOperand === "0") {
@@ -46,25 +49,27 @@ function reducer(state, { type, payload }) {
       if (state.previousOperand == null) {
         return {
           ...state,
-          operation: payload.operation,
           previousOperand: state.currentOperand,
+          operation: payload.operation,
+          
           currentOperand: null,
         };
       }
 
       return {
         ...state,
-        previousOperand: evaluate(state),
+        previousOperand: evaluat(state),
         operation: payload.operation,
         currentOperand: null,
       };
     case ACTIONS.CLEAR:
+      localStorage.setItem('eval',"")
       return {};
     case ACTIONS.DELETE_DIGIT:
       if (state.overwrite) {
         return {
           ...state,
-          overwrite: false,
+          overwrite: true,
           currentOperand: null,
         };
       }
@@ -91,16 +96,18 @@ function reducer(state, { type, payload }) {
         overwrite: true,
         previousOperand: null,
         operation: null,
-        currentOperand: evaluate(state),
+        currentOperand: evaluat(state),
       };
     default:
       return state;
   }
 }
 
-function evaluate({ currentOperand, previousOperand, operation }) {
+function evaluat({ currentOperand, previousOperand, operation }) {
+  
   const prev = parseFloat(previousOperand);
   const current = parseFloat(currentOperand);
+  
   if (isNaN(prev) || isNaN(current)) return "";
   let computation = "";
   switch (operation) {
@@ -108,7 +115,10 @@ function evaluate({ currentOperand, previousOperand, operation }) {
       computation = prev + current;
       break;
     case "-":
+      
       computation = prev - current;
+    
+        
       break;
     case "*":
       computation = prev * current;
@@ -119,7 +129,7 @@ function evaluate({ currentOperand, previousOperand, operation }) {
     default:
       return "";
   }
-
+localStorage.setItem('eval',computation)
   return computation.toString();
 }
 
@@ -158,9 +168,15 @@ function App() {
               <input
                 className="form-control"
                 style={{ height: "60px", fontSize: "1.5rem" }}
-                value={Answer.replace("undefined", "")}
+                value={Answer.replace("undefined", "")
+              }
                 readOnly
               />
+              
+              <label htmlFor="answer">
+              {localStorage.getItem('eval')}
+              </label>
+              
             </div>
           </td>
         </tr>
