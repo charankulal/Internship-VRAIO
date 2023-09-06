@@ -7,7 +7,7 @@ function Calculator() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
 
-  //input
+  
   const inputHandler = (event) => {
     if (answer === "Invalid Input!!") return;
     let val = event.target.innerText;
@@ -73,22 +73,29 @@ function Calculator() {
     }
 
     try {
-      // check brackets are balanced or not
+      
       if (!checkBracketBalanced(finalExpression)) {
         const errorMessage = { message: "Brackets are not balanced!" };
         throw errorMessage;
       }
-      result = evaluate(finalExpression); //mathjs
+      if(input.includes('^ 2')){
+         result=Math.pow((parseFloat(input)),2);
+        
+      }
+      else
+      result = evaluate(finalExpression); 
+      
+      
     } catch (error) {
       result =
         error.message === "Brackets are not balanced!"
           ? "Brackets are not balanced!"
-          : "Invalid Input!!"; //error.message;
+          : "Invalid Input!!"; 
     }
     isNaN(result) ? setAnswer(result) : setAnswer(round(result, 3));
   };
 
-  // remove last character
+
   const backspace = () => {
     if (answer !== "") {
       setInput(answer.toString().slice(0, -1));
@@ -96,9 +103,9 @@ function Calculator() {
     } else setInput((prev) => prev.slice(0, -1));
   };
 
-  // change prefix of expression
+
   const changePlusMinus = () => {
-    //need to change for answer
+   
     if (answer === "Invalid Input!!") return;
     else if (answer !== "") {
       let ans = answer.toString();
