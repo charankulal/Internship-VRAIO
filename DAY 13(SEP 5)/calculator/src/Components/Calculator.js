@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Display from "./Display";
+import Output from "./Output";
 import Buttons from "./Buttons";
 import { evaluate, round } from "mathjs";
+import './Styles.css'
 
 function Calculator() {
   const [input, setInput] = useState("");
@@ -58,7 +59,7 @@ function Calculator() {
     finalExpression = finalExpression.replaceAll("x", "*");
     finalExpression = finalExpression.replaceAll("÷", "/");
 
-    // evaluate square root
+    
     let noSqrt = input.match(/√[0-9]+/gi);
 
     if (noSqrt !== null) {
@@ -79,11 +80,11 @@ function Calculator() {
         throw errorMessage;
       }
       if(input.includes('^ 2')){
-         result=Math.pow((parseFloat(input)),2);
+         result=round(Math.pow((parseFloat(input)),2),10);
         
       }
       else
-      result = evaluate(finalExpression); 
+      result = round(evaluate(finalExpression),6); 
       
       
     } catch (error) {
@@ -136,12 +137,12 @@ function Calculator() {
 
   return (
         <>
-       
+       <h3 className="text-center"> My Calculator</h3>
         <div
-          className="container  h-25 my-5 "
-          style={{ fontSize: "2.5rem", width: "25%" }}
+          className="container  h-25 my-5 bg-dark"
+          style={{ fontSize: "2.5rem", width: "23%" }}
         >
-           <h3 className="text-center"> My Calculator</h3>
+           
     
 
           
@@ -149,7 +150,7 @@ function Calculator() {
             <tr>
               <td colSpan="5">
             
-          <Display input={input} setInput={setInput} answer={answer} />
+          <Output input={input} setInput={setInput} answer={answer} />
      
               </td>
             </tr>

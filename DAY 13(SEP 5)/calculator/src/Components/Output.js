@@ -17,7 +17,7 @@ const Display = ({ input, setInput, answer }) => {
             <input
               type="text"
               name="input"
-              className="form-control"
+              className="form-control my-2"
               style={{ fontSize:"2rem" }}
               value={input}
               placeholder="0"
@@ -32,19 +32,28 @@ const Display = ({ input, setInput, answer }) => {
             <input
               type="text"
               name="input"
-              className="form-control"
+              className="form-control my-2"
+              style={{ fontSize:"2rem" }}
               value={input}
               placeholder="0"
               maxLength={12}
               disabled
             />
-            <input
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text my-2" style={{ fontSize:"2rem",textAlign:"right",color:"red" }} >Ans</span>
+                </div>
+                <input
               type="text"
               name="value"
-              className="form-control"
+              className="form-control my-2"
+              style={{ fontSize:"2rem",textAlign:"right",color:"red" }}
               value={answer}
+              maxLength={12}
               disabled
             />
+              </div>
+            
           </>
         )}
       
