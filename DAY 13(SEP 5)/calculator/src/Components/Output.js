@@ -1,6 +1,6 @@
 import React from "react";
 
-const Display = ({ input, setInput, answer }) => {
+const Output = ({ input, setInput, answer }) => {
   const onChangeTagInput = (e) => {
     const re = /^[!%(-+\x2D-9^glox\xF7\u221A]+$/;
 
@@ -39,16 +39,16 @@ const Display = ({ input, setInput, answer }) => {
               maxLength={12}
               disabled
             />
-            <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text my-2" style={{ fontSize:"2rem",textAlign:"right",color:"red" }} >Ans</span>
+            <div className="input-group">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" style={{ fontSize:"2rem",textAlign:"right",color:"red" }} >Ans</span>
                 </div>
                 <input
               type="text"
               name="value"
-              className="form-control my-2"
+              className="form-control"
               style={{ fontSize:"2rem",textAlign:"right",color:"red" }}
-              value={answer}
+              value={answer==='NaN'?"Syntax Error":answer}
               maxLength={12}
               disabled
             />
@@ -61,4 +61,4 @@ const Display = ({ input, setInput, answer }) => {
   );
 };
 
-export default Display;
+export default Output;

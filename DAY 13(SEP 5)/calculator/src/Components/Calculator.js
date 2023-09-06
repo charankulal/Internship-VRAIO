@@ -79,12 +79,12 @@ function Calculator() {
         const errorMessage = { message: "Brackets are not balanced!" };
         throw errorMessage;
       }
-      if(input.includes('^ 2')){
-         result=round(Math.pow((parseFloat(input)),2),10);
+      if(input.includes('^ 2') || input.includes('^2')){
+         result=round(Math.pow((parseFloat(input)),2),4);
         
       }
       else
-      result = round(evaluate(finalExpression),6); 
+      result = round(evaluate(finalExpression),4); 
       
       
     } catch (error) {
@@ -94,6 +94,7 @@ function Calculator() {
           : "Invalid Input!!"; 
     }
     isNaN(result) ? setAnswer(result) : setAnswer(round(result, 3));
+    // result.toString().includes(' NaN')&&setAnswer('Syntax Error')
   };
 
 
