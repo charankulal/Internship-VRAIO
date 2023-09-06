@@ -55,7 +55,7 @@ function Calculator() {
     finalExpression = finalExpression.replaceAll("x", "*");
     finalExpression = finalExpression.replaceAll("÷", "/");
 
-    let noSqrt = input.match(/√[0-9]+/gi);
+    let noSqrt = input.match(/√[+-][0-9]+/gi);
 
     if (noSqrt !== null) {
       let evalSqrt = input;
@@ -83,7 +83,7 @@ function Calculator() {
           : "Invalid Input!!";
     }
     isNaN(result) ? setAnswer(result) : setAnswer(round(result, 3));
-    // result.toString().includes(' NaN')&&setAnswer('Syntax Error')
+    
   };
 
   const backspace = () => {
