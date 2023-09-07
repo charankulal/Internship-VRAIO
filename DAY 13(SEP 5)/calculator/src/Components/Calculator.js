@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Output from "./Output";
 import Buttons from "./Buttons";
 import { evaluate, round } from "mathjs";
@@ -7,6 +7,13 @@ import "./Styles.css";
 function Calculator() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
 
   const inputHandler = (event) => {
     if (answer === "Syntax Error") return;
@@ -31,6 +38,7 @@ function Calculator() {
   const clearInput = () => {
     setInput("");
     setAnswer("");
+    setCount(0)
   };
 
   const checkBracketBalanced = (expr) => {
@@ -126,7 +134,7 @@ function Calculator() {
 
   return (
     <>
-      <h3 className="text-center"> My Calculator</h3>
+      <h3 className="text-center"> My Calculator {count}</h3>
       <div
         className="container  h-25 my-5 bg-dark"
         style={{ fontSize: "2.5rem", width: "23%" }}
@@ -144,6 +152,7 @@ function Calculator() {
             backspace={backspace}
             changePlusMinus={changePlusMinus}
             calculateAns={calculateAns}
+            
           />
         </table>
       </div>
