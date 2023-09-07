@@ -7,22 +7,13 @@ import "./Styles.css";
 function Calculator() {
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
-  // const [count, setCount] = useState(0);
-  const [counter, setCounter] = useState(0);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    alert("Number of clicks: " + counter);
-  },[counter]);
-
-  function increment() {
-    setCounter(counter+1);
-  }
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCount((count) => count + 1);
-  //   }, 1000);
-  // });
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
 
   const inputHandler = (event) => {
     if (answer === "Syntax Error") return;
@@ -47,7 +38,7 @@ function Calculator() {
   const clearInput = () => {
     setInput("");
     setAnswer("");
-    // setCount(0)
+    setCount(0)
   };
 
   const checkBracketBalanced = (expr) => {
@@ -143,10 +134,7 @@ function Calculator() {
 
   return (
     <>
-    <p>Number of clicks:  {counter}</p>
-  <button className="btn btn-primary" onClick={increment}>Increment</button>
-      <h3 className="text-center"> My Calculator </h3>
-      
+      <h3 className="text-center"> My Calculator {count}</h3>
       <div
         className="container  h-25 my-5 bg-dark"
         style={{ fontSize: "2.5rem", width: "23%" }}
