@@ -47,7 +47,8 @@ const Buttons = ({
             className="btn btn-secondary col-12 mx-1 rounded-pill bg-secondary"
             onClick={inputHandler}
           >
-            ÷
+           ÷ 
+            {/* {Alt+0247} */}
           </button>
         </td>
         <td>
