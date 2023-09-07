@@ -9,7 +9,7 @@ function Calculator() {
   const [answer, setAnswer] = useState("");
 
   const inputHandler = (event) => {
-    if (answer === "Invalid Input!!") return;
+    if (answer === "Syntax Error") return;
     let val = event.target.innerText;
 
     if (val === "x2") val = "^ 2";
@@ -70,7 +70,7 @@ function Calculator() {
 
     try {
       if (!checkBracketBalanced(finalExpression)) {
-        const errorMessage = { message: "Brackets are not balanced!" };
+        const errorMessage = { message: "Syntax Error" };
         throw errorMessage;
       }
       if (input.includes("^ 2") || input.includes("^2")) {
@@ -78,9 +78,9 @@ function Calculator() {
       } else result = round(evaluate(finalExpression), 4);
     } catch (error) {
       result =
-        error.message === "Brackets are not balanced!"
-          ? "Brackets are not balanced!"
-          : "Invalid Input!!";
+        error.message === "Syntax Error"
+          ? "Syntax Error"
+          : "Syntax Error";
     }
     isNaN(result) ? setAnswer(result) : setAnswer(round(result, 3));
     
