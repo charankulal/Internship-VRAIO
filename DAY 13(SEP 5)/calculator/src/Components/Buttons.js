@@ -34,6 +34,7 @@ const Buttons = ({
             {/* &#x232B; */}
           </button>
         </td>
+        
         <td>
           <button
             className="btn btn-secondary col-12 mx-1 rounded-pill bg-secondary"

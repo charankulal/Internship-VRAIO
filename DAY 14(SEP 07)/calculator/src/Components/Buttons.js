@@ -14,6 +14,7 @@ const Buttons = ({
       document.getElementById("equalbtn").click();
     }
   });
+  
   return (
     <>
       <tr>
