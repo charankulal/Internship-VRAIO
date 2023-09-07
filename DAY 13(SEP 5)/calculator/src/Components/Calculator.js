@@ -15,6 +15,8 @@ function Calculator() {
     if (val === "x2") val = "^ 2";
     else if (val === "x3") val = "^ 3";
     else if (val === "3√") val = "^(1÷3)";
+    // else if (val === "√") val = "^(1÷2)";
+    
     else if (val === "log") val = "log(";
 
     let str = input + val;
@@ -55,7 +57,7 @@ function Calculator() {
     finalExpression = finalExpression.replaceAll("x", "*");
     finalExpression = finalExpression.replaceAll("÷", "/");
 
-    let noSqrt = input.match(/√[+-][0-9]+/gi);
+    let noSqrt = input.match(/√[+-]*[0-9]+/gi);
 
     if (noSqrt !== null) {
       let evalSqrt = input;
