@@ -2,17 +2,22 @@
 import Header from './Components/Header';
 import Tasks from './Components/Tasks';
 import AddTask from './Components/AddTask';
+import Data from './Components/Data';
 // Importing React Hooks
 import { useState, useEffect } from 'react';
 // Importing Packages
 import { v4 as uuidv4 } from 'uuid';
 import Swal from "sweetalert2";
+import Form from './Components/Form';
+import UpdateUser from './Components/UpdateUser';
+// import axios from "axios"
 
 function App() {
     // All States
     const [loading, setloading] = useState(true); // Pre-loader before page renders
     const [tasks, setTasks] = useState([]); // Task State
     const [showAddTask, setShowAddTask] = useState(false); // To reveal add task form
+    
 
     // Pre-loader
     useEffect(() => {
@@ -134,6 +139,10 @@ function App() {
                                 :
                                 ('No Task Found!')
                         }
+                        <Data/>
+                        <Form/>
+                        <UpdateUser/>
+                        
                     </div>
             }
         </>
