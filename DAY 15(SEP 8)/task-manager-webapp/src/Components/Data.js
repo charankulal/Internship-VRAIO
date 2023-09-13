@@ -6,7 +6,7 @@ export default function Data() {
     const [post, setPost] = useState({});
 
 useEffect(() => {
-      axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
+      axios.get("https://api.mockfly.dev/mocks/63b02fc0-cf1c-4dc8-ab4c-4602d7edc021/tasks").then((data) => {
       console.log(data);
       setPost(data?.data);
     });

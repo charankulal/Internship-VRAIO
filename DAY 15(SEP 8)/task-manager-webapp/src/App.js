@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import Swal from "sweetalert2";
 import Form from './Components/Form';
 import UpdateUser from './Components/UpdateUser';
+import RemoveUser from './Components/RemoveUser';
 // import axios from "axios"
 
 function App() {
@@ -142,6 +143,7 @@ function App() {
                         <Data/>
                         <Form/>
                         <UpdateUser/>
+                        <RemoveUser/>
                         
                     </div>
             }
